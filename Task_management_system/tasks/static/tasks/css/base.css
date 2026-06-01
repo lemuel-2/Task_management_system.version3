@@ -1,0 +1,239 @@
+/* ─── Font Import ─────────────────────────────────────────────────── */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap");
+
+/* ─── Design Tokens ───────────────────────────────────────────────── */
+:root {
+    --navbar-height: 72px;
+    --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --color-bg: #eef3fb;
+    --color-surface: rgba(255, 255, 255, 0.92);
+    --color-text: #172a45;
+    --color-heading: #111827;
+    --color-primary: #3f6dff;
+    --color-primary-dark: #2c55d5;
+    --color-muted: #6f7f98;
+    --color-border: rgba(226, 232, 240, 0.9);
+    --color-shadow: rgba(34, 72, 146, 0.08);
+    --color-shadow-hover: rgba(34, 72, 146, 0.14);
+    --radius-card: 1rem;
+    --radius-pill: 999px;
+}
+
+/* ─── Base ────────────────────────────────────────────────────────── */
+body {
+    min-height: 100vh;
+    background: radial-gradient(circle at top, #eef5ff 0%, #f8f6f0 45%, var(--color-bg) 100%);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--color-heading);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+p, label, .text-muted, .form-label {
+    color: var(--color-muted);
+}
+
+/* ─── Layout ──────────────────────────────────────────────────────── */
+.container,
+main.container {
+    max-width: 980px;
+    width: 100%;
+    padding-inline: 1rem;
+}
+
+/* ─── Navbar ──────────────────────────────────────────────────────── */
+.navbar {
+    background: rgba(255, 255, 255, 0.96);
+    border-bottom: 1px solid var(--color-border);
+    backdrop-filter: blur(12px);
+}
+.navbar .navbar-brand {
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: var(--color-heading);
+    font-size: 1.05rem;
+}
+.btn-outline-dark {
+    letter-spacing: 0.04em;
+    border-radius: var(--radius-pill);
+    padding: 0.65rem 1.2rem;
+    background: rgba(255, 255, 255, 0.95);
+    border-color: rgba(23, 42, 69, 0.14);
+}
+.btn-outline-dark:hover,
+.btn-outline-dark:focus-visible {
+    background: #fff;
+    border-color: rgba(23, 42, 69, 0.22);
+}
+
+/* ─── Buttons & Inputs ────────────────────────────────────────────── */
+.btn,
+.form-select,
+.form-control {
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+.btn:hover,
+.btn:focus-visible,
+.form-select:hover,
+.form-select:focus-visible,
+.form-control:hover,
+.form-control:focus-visible {
+    transform: translateY(-1px);
+}
+.btn-primary {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:focus-visible {
+    background-color: var(--color-primary-dark);
+    border-color: var(--color-primary-dark);
+}
+.form-control,
+.form-select,
+.form-check-input {
+    border-radius: 0.9rem;
+}
+input[type="date"] {
+    max-width: 100%;
+}
+
+/* ─── Cards & List Items ──────────────────────────────────────────── */
+.card,
+.list-group-item {
+    border: 0;
+    border-radius: var(--radius-card);
+    background: var(--color-surface);
+    box-shadow: 0 18px 48px var(--color-shadow);
+    transition: transform 0.24s ease, box-shadow 0.24s ease, border-color 0.24s ease;
+    will-change: transform;
+    animation: fadeInUp 0.5s ease both;
+}
+
+.card,
+.list-group-item {
+    border: 1px solid rgba(226, 232, 240, 0.85);
+}
+
+.card:nth-child(1),  .list-group-item:nth-child(1)  { animation-delay: 0.00s; }
+.card:nth-child(2),  .list-group-item:nth-child(2)  { animation-delay: 0.05s; }
+.card:nth-child(3),  .list-group-item:nth-child(3)  { animation-delay: 0.10s; }
+.card:nth-child(4),  .list-group-item:nth-child(4)  { animation-delay: 0.15s; }
+.card:nth-child(5),  .list-group-item:nth-child(5)  { animation-delay: 0.20s; }
+.card:nth-child(6),  .list-group-item:nth-child(6)  { animation-delay: 0.25s; }
+.card:nth-child(7),  .list-group-item:nth-child(7)  { animation-delay: 0.30s; }
+.card:nth-child(8),  .list-group-item:nth-child(8)  { animation-delay: 0.35s; }
+.card:nth-child(9),  .list-group-item:nth-child(9)  { animation-delay: 0.40s; }
+.card:nth-child(n+10), .list-group-item:nth-child(n+10) { animation-delay: 0.45s; }
+
+.card:hover,
+.card:focus-visible,
+.list-group-item:hover,
+.list-group-item:focus-visible {
+    transform: translateY(-4px);
+    box-shadow: 0 22px 58px var(--color-shadow-hover);
+}
+.list-group-item {
+    margin-bottom: 0.9rem;
+    background: rgba(255, 255, 255, 0.98);
+    border: 1px solid rgba(226, 232, 240, 0.7);
+}
+.list-group-item:last-child {
+    margin-bottom: 0;
+}
+
+/* ─── Danger & Secondary Variants ────────────────────────────────── */
+.list-group-item-danger {
+    background-color: #f8d7da;
+    color: #000;
+}
+.list-group-item-secondary {
+    background-color: #f1f3f7;
+    opacity: 1;
+}
+
+/* ─── Sticky Page Header ──────────────────────────────────────────── */
+.page-header {
+    background: rgba(255, 255, 255, 0.82);
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    position: sticky;
+    top: var(--navbar-height);
+    z-index: 1020;
+    width: 100%;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+/* ─── Task Layout ─────────────────────────────────────────────────── */
+.task-footer,
+.task-summary {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.75rem;
+    align-items: center;
+}
+.task-actions form {
+    margin-bottom: 0;
+}
+
+/* ─── Misc ────────────────────────────────────────────────────────── */
+.text-muted {
+    color: var(--color-muted);
+}
+.badge {
+    font-size: 0.8rem;
+    padding: 0.5em 0.75em;
+    border-radius: var(--radius-pill);
+    letter-spacing: 0.01em;
+}
+.card-title {
+    letter-spacing: 0.01em;
+}
+.card-footer {
+    background: transparent;
+    border-top: none;
+}
+.alert {
+    border-radius: var(--radius-card);
+    box-shadow: 0 14px 28px rgba(35, 61, 120, 0.06);
+}
+
+/* ─── Animations ──────────────────────────────────────────────────── */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ─── Reduced Motion ──────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+    .card,
+    .list-group-item {
+        animation: none;
+        will-change: auto;
+    }
+    .btn:hover,
+    .btn:focus-visible,
+    .form-select:hover,
+    .form-control:hover,
+    .card:hover,
+    .card:focus-visible,
+    .list-group-item:hover,
+    .list-group-item:focus-visible {
+        transform: none;
+    }
+}

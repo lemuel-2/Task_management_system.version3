@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {% if object %}Edit Task{% else %}Assign Task{% endif %} · Employee Task Manager
+{% endblock %}
+
+{% block meta_description %}
+    <meta name="description" content="{% if object %}Edit task: {{ object.title }}{% else %}Assign a new task to an employee{% endif %}">
+{% endblock %}
+
+{% block content %}
+
+<div style="max-width: 640px; margin: 0 auto;">
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <a href="{% url 'tasks:task-list' %}"
+           class="btn btn-outline-secondary btn-sm"
+           style="font-size: 0.875rem;">← Back to tasks</a>
+    </div>
+
+    <div class="card">
+        <div class="card-body p-4">
+
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 class="mb-0">
+                    {% if object %}Edit Task{% else %}Assign Task{% endif %}
+                </h2>
+            </div>
+
+            {% if form.non_field_errors %}
+                <div class="alert alert-danger mb-4" role="alert">
+                    {% for error in form.non_field_errors %}
+                        <p class="mb-0">{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            <form method="post" id="task-form">
+                {% csrf_token %}
+
+                <div class="mb-3">
+                    {{ form.title.label_tag }}
+                    {{ form.title }}
+                    {% if form.title.errors %}
+                        <div class="invalid-feedback d-block">{{ form.title.errors.0 }}</div>
+                    {% endif %}
+                </div>
+
+                <div class="mb-3">
+                    {{ form.description.label_tag }}
+                    {{ form.description }}
+                    {% if form.description.errors %}
+                        <div class="invalid-feedback d-block">{{ form.description.errors.0 }}</div>
+                    {% endif %}
+                </div>
+
+                <div class="mb-3">
+                    {{ form.assigned_to.label_tag }}
+                    {{ form.assigned_to }}
+                    {% if form.assigned_to.errors %}
+                        <div class="invalid-feedback d-block">{{ form.assigned_to.errors.0 }}</div>
+                    {% endif %}
+                </div>
+
+                <div class="row g-3 mb-3">
+                    <div class="col-md-6">
+                        {{ form.priority.label_tag }}
+                        {{ form.priority }}
+                        {% if form.priority.errors %}
+                            <div class="invalid-feedback d-block">{{ form.priority.errors.0 }}</div>
+                        {% endif %}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form.due_date.label_tag }}
+                        {{ form.due_date }}
+                        {% if form.due_date.errors %}
+                            <div class="invalid-feedback d-block">{{ form.due_date.errors.0 }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <div class="form-check">
+                        {{ form.completed }}
+                        <label class="form-check-label" for="id_completed">Completed</label>
+                        {% if form.completed.errors %}
+                            <div class="invalid-feedback d-block">{{ form.completed.errors.0 }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="d-flex gap-2">
+                    <button type="submit" class="btn btn-primary">
+                        {% if object %}Save changes{% else %}Assign Task{% endif %}
+                    </button>
+                    <a class="btn btn-outline-secondary"
+                       href="{% url 'tasks:task-list' %}">Cancel</a>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    const form = document.getElementById('task-form');
+    if (form) {
+        form.addEventListener('submit', function () {
+            form.classList.add('was-validated');
+        });
+    }
+</script>
+{% endblock %}
