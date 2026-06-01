@@ -42,13 +42,7 @@ source venv/bin/activate
 ### 3. Install Dependencies
 
 ```bash
-pip install -r requirements.txt
-```
-
-If `requirements.txt` is not available, install common dependencies:
-
-```bash
-pip install flask  # or Django, FastAPI depending on your setup
+pip install Django
 ```
 
 ## Running the Application
@@ -75,56 +69,3 @@ The application will typically be available at: **http://localhost:5000** or **h
 - ✅ Delete tasks
 - ✅ Responsive web interface
 
-## Project Structure
-
-```
-Task_management_system.version3/
-├── README.md
-├── app.py (or main application file)
-├── requirements.txt
-├── static/
-│   ├── css/
-│   │   └── style.css
-│   └── js/
-├── templates/
-│   └── index.html
-│   └── tasks.html
-└── (other application files)
-```
-
-## Troubleshooting
-
-### Common Issues
-
-**Port Already in Use**
-```bash
-# Change the port
-python app.py --port 8000
-```
-
-**Module Not Found Error**
-```bash
-# Ensure virtual environment is activated and dependencies are installed
-pip install -r requirements.txt
-```
-
-**Permission Denied (macOS/Linux)**
-```bash
-chmod +x app.py
-```
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit issues and pull requests.
-
-## License
-
-This project is open source and available under the MIT License.
-
-## Support
-
-For issues or questions, please create an issue on the GitHub repository.
-
----
-
-**Happy Task Managing! 🚀**
