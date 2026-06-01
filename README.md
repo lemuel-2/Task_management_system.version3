@@ -31,7 +31,7 @@ cd Task_management_system.version3
 
 ```bash
 # On Windows
-python -m venv venv
+python -m venv .venv
 venv\Scripts\activate
 
 # On macOS/Linux
