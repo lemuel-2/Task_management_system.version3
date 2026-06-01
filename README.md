@@ -56,15 +56,8 @@ pip install flask  # or Django, FastAPI depending on your setup
 ### Start the Server
 
 ```bash
-# If using Flask
-python app.py
-
 # If using Django
 python manage.py runserver
-
-# If using FastAPI
-uvicorn main:app --reload
-```
 
 The application will typically be available at: **http://localhost:5000** or **http://127.0.0.1:5000**
 
